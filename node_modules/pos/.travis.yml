@@ -1,0 +1,8 @@
+language: node_js
+node_js:
+  - 0.10
+deploy:
+  provider: npm
+  email: darius.kazemi@gmail.com
+  api_key:
+    secure: "XhKl43+7lWSqOmT7KYeJybD2bC8iR+aiWX8IGbDTKMMsBR4KvMpMFmTUHofh3oRNMm1uLo2BZ1qtNKSeYnJQuj4SgFqkq6S5tBdRVlRcgiVR4gswqlkO9+JVMgOofEaXgnxMmEwIZwTyX3v+zzQT1i7ZHYR24+kOM/c/+3iPwto="
