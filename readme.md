@@ -5,9 +5,12 @@ Google Chromeで閲覧している英語のページを品詞分類し、色を�
 
 
 ## Demo
-Before
+以下のページに拡張機能を適応した例
+
+http://www.wired.com/2016/07/feynman-diagrams-almost-saved-space/
+- Before
 ![my image](images/before.PNG)
-After
+- After
 ![my image](images/after.PNG)
 
 ## Usage
