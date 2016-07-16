@@ -8,9 +8,16 @@ Google Chromeで閲覧している英語のページを品詞分類し、色を�
 以下のページに拡張機能を適応した例
 
 http://www.wired.com/2016/07/feynman-diagrams-almost-saved-space/
-- Before
+
+
+- Before page
+
 ![my image](images/before.PNG)
-- After
+
+
+- After page
+
+
 ![my image](images/after.PNG)
 
 ## Usage
@@ -26,4 +33,4 @@ MIT
 
 ## Author
 
-[DrillDripper](https://github.com/DrillDripper)
+[drilldripper](https://github.com/DrillDripper)
