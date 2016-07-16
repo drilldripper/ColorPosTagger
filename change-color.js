@@ -1,4 +1,5 @@
-chrome.runtime.onMessage.addListener(function() {
-    console.log("MODULE_TEST");
-    colorChange();
+chrome.runtime.onMessage.addListener(function(request) {
+    // console.log(request);
+    // console.log("MODULE TEST");
+    colorChange(request);
 });
