@@ -10,8 +10,8 @@
             ],
             "js": [
                 "jquery-3.0.0.min.js",
-                "request_test.js"
-                //"build.js"
+                "build.js",
+                "change-color.js"
             ]
         }
     ],
