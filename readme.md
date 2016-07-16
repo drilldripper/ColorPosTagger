@@ -26,4 +26,4 @@ MIT
 
 ## Author
 
-[tcnksm](https://github.com/DrillDripper)
+[DrillDripper](https://github.com/DrillDripper)
