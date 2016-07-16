@@ -23,7 +23,7 @@
         "persistent": false
     },
     "browser_action": {
-        "default_icon": "19px.png",
+        "default_icon": "icon1.png",
         "default_title": "Color Parser"
     },
     "permissions": [

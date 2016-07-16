@@ -1,26 +1,30 @@
 var pos = require('pos');
 ptags = [];
+first = true;
+changed = false;
+htmlpage = '';
 module.exports = function colorChange(flag) {
     console.log('init');
     console.log(ptags.length);
     var prevWord = '';
     let i = 0;
+    //最初だけページを保存する
+    if (first === true) {
+        htmlpage = $('body').html();
+        first = false;
+    }
     $(function () {
-        if (ptags.length > 0) {
-            $('p').each(function () {
-                var word = ptags[i];
-                $(this).replaceWith(word);
-                i++;
-            });
-            console.log("recovery");
-            ptags = [];
+        if (changed == true) {
+            console.log("recovery SHITAI!");
+            //書き換え後のDOM要素はjqueryのhtmlでは取得できない
+            $('body').empty().append(htmlpage);
+
+            changed = false;
         } else {
+            changed = true;
             console.log("change");
             $('p').each(function () {
-                console.log("HOGEHOGE!");
                 var word = $(this).html();
-                console.log(word);
-                ptags.push(word)
                 //htmlのタグを消す正規表現
                 word = word.replace(/<("[^"]*"|'[^']*'|[^'">])*>/g, '');
                 //console.log(word);
@@ -66,10 +70,8 @@ module.exports = function colorChange(flag) {
                         replacedSentence += word;
                     }
                     prevWord = word;
-                    //console.log(taggedWord[0]);
                 }
                 $(this).replaceWith("<p>" + replacedSentence + "</p>");
-
             });
         }
     });

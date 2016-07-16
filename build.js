@@ -1,27 +1,31 @@
 (function(f){if(typeof exports==="object"&&typeof module!=="undefined"){module.exports=f()}else if(typeof define==="function"&&define.amd){define([],f)}else{var g;if(typeof window!=="undefined"){g=window}else if(typeof global!=="undefined"){g=global}else if(typeof self!=="undefined"){g=self}else{g=this}g.colorChange = f()}})(function(){var define,module,exports;return (function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
 var pos = require('pos');
 ptags = [];
+first = true;
+changed = false;
+htmlpage = '';
 module.exports = function colorChange(flag) {
     console.log('init');
     console.log(ptags.length);
     var prevWord = '';
     let i = 0;
+    //最初だけページを保存する
+    if (first === true) {
+        htmlpage = $('body').html();
+        first = false;
+    }
     $(function () {
-        if (ptags.length > 0) {
-            $('p').each(function () {
-                var word = ptags[i];
-                $(this).replaceWith(word);
-                i++;
-            });
-            console.log("recovery");
-            ptags = [];
+        if (changed == true) {
+            console.log("recovery SHITAI!");
+            //書き換え後のDOM要素はjqueryのhtmlでは取得できない
+            $('body').empty().append(htmlpage);
+
+            changed = false;
         } else {
+            changed = true;
             console.log("change");
             $('p').each(function () {
-                console.log("HOGEHOGE!");
                 var word = $(this).html();
-                console.log(word);
-                ptags.push(word)
                 //htmlのタグを消す正規表現
                 word = word.replace(/<("[^"]*"|'[^']*'|[^'">])*>/g, '');
                 //console.log(word);
@@ -67,10 +71,8 @@ module.exports = function colorChange(flag) {
                         replacedSentence += word;
                     }
                     prevWord = word;
-                    //console.log(taggedWord[0]);
                 }
                 $(this).replaceWith("<p>" + replacedSentence + "</p>");
-
             });
         }
     });
