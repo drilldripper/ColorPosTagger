@@ -21,18 +21,28 @@ module.exports = function colorChange(flag) {
             $('body').empty().append(htmlpage);
             changed = false;
         } else {
-            chrome.storage.local.get('syugo', function (items) {
+            var keys = [
+                'subject',
+                'adjective',
+                'verb',
+                'adverb',
+                'auxiliaryVerb',
+                'relative',
+                'conjunction',
+                'determiner'
+            ];
+            chrome.storage.local.get(keys, function (items) {
                 console.log(items);
+                changeHTML(items);
             });
             changed = true;
             console.log("change");
-            changeHTML();
         }
     });
 };
 
 
-function changeHTML() {
+function changeHTML(fontColors) {
     var prevWord = '';
     $('p').each(function () {
         var word = $(this).html();
@@ -46,33 +56,38 @@ function changeHTML() {
             var taggedWord = taggedWords[i];
             var word = taggedWord[0];
             var tag = taggedWord[1];
+            console.log(word + ' / ' + tag);
 
             if (!(word === "'" || word === "," || word === "." || prevWord === "'")) {
                 replacedSentence += " ";
             }
-            //品詞ごとに色を付ける
-            //主語
-            if (tag === "NN" || tag === "DT" || tag === "NNP" || tag === "NNPS" || tag === "NNS" || tag === "PRP") {
-                replacedSentence += '<font color="#8B0000">' + word + '</font>';
+            //品詞分類する
+            //名詞
+            if (tag === "NN" || tag === "NNP" || tag === "NNPS" 
+                || tag === "NNS" || tag === "PRP" || tag == "PRP$" || tag === "EX") {
+                replacedSentence += fontColors.subject + word + '</font>';
                 //形容詞
             } else if (tag === "JJ" || tag === "JJR" || tag === "JJS") {
-                replacedSentence += '<font color="#1E90FF">' + word + '</font>';
-                //動詞
-            } else if (tag === "VB" || tag === "VBD" || tag === "VBG" || tag === "VBN" || tag === "VBP" ||
-                tag === "VBZ") {
-                replacedSentence += '<font color="#FFA500">' + word + '</font>';
-            }//助動詞
-            else if (tag === "MD", tag === "RB") {
-                replacedSentence += '<font color="#008000">' + word + '</font>';
+                replacedSentence += fontColors.adjective + word + '</font>';
+                //副詞
+            } else if (tag === "RB" || tag === "RBR" || tag === "RBS") {
+                replacedSentence += fontColors.adverb + word + '</font>';
+            }   //動詞
+            else if (tag === "VB" || tag === "VBD" || tag === "VBG" || tag === "VBN"
+                || tag === "VBP" || tag === "VBZ") {
+                replacedSentence += fontColors.verb + word + '</font>';
+            }   //助動詞
+            else if (tag === "MD") {
+                replacedSentence += fontColors.auxiliaryVerb + word + '</font>';
                 //準動詞
-            } else if (tag === "DT") {
-                replacedSentence += '<font color="#4169E1">' + word + '</font>';
-                //関係詞
             } else if (tag === "WDT" || tag === "WP" || tag === "WP$" || tag === "WRB") {
-                replacedSentence += '<font color="#7B68EE">' + word + '</font>';
+                replacedSentence += fontColors.relative + word + '</font>';
                 //接続詞
             } else if (tag === "IN" || tag === "CC") {
-                replacedSentence += '<font color="#DC143C">' + word + '</font>';
+                replacedSentence += fontColors.conjunction + word + '</font>';
+                //冠詞
+            } else if (tag === "DT") {
+                replacedSentence += fontColors.determiner + word + '</font>';
                 //その他
             } else {
                 replacedSentence += word;

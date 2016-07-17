@@ -1,4 +1,14 @@
-chrome.storage.local.set({ 'syugo': '<font color="#FF00FF">'}, function () {
+//default color
+chrome.storage.local.set({
+	 'noun': '<font color="#FF6347">', 
+	 'adjective':'<font color="#1E90FF">' ,
+	 'verb': '<font color="#FFA500">', 
+	 'adverb': '<font color="#008080">', 
+	 'auxiliaryVerb':'<font color="#008000">' ,
+	 'relative': '<font color="#9ACD32">', 
+	 'conjunction':'<font color="#DC143C">',
+	 'determiner': '<font color="#FF6347">'
+	}, function () {
 	console.log('Settings saved');
 });
 
