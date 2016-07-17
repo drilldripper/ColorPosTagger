@@ -1,3 +1,8 @@
+chrome.storage.local.set({ 'syugo': '<font color="#FF00FF">'}, function () {
+	console.log('Settings saved');
+});
+
+
 chrome.browserAction.onClicked.addListener(function (id, bookmark) {
 	console.log("BACKGROUND");
 	// 取得するタブのクエリ
@@ -26,14 +31,14 @@ chrome.browserAction.onClicked.addListener(function (id, bookmark) {
 
 //アイコンの更新
 var toggle = false;
-chrome.browserAction.onClicked.addListener(function(tab) {
+chrome.browserAction.onClicked.addListener(function (tab) {
   toggle = !toggle;
-  if(toggle){
-    chrome.browserAction.setIcon({path: "icon1.png", tabId:tab.id});
-    chrome.tabs.executeScript(tab.id, {file:"SCRIPT.user.js"});
+  if (toggle) {
+    chrome.browserAction.setIcon({ path: "icon1.png", tabId: tab.id });
+    chrome.tabs.executeScript(tab.id, { file: "SCRIPT.user.js" });
   }
-  else{
-    chrome.browserAction.setIcon({path: "icon2.png", tabId:tab.id});
-    chrome.tabs.executeScript(tab.id, {code:"alert()"});
+  else {
+    chrome.browserAction.setIcon({ path: "icon2.png", tabId: tab.id });
+    chrome.tabs.executeScript(tab.id, { code: "alert()" });
   }
 });
