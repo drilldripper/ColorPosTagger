@@ -1,11 +1,9 @@
 var pos = require('pos');
-ptags = [];
 first = true;
 changed = false;
 htmlpage = '';
 module.exports = function colorChange(flag) {
     console.log('init');
-    console.log(ptags.length);
     let i = 0;
     //最初だけページを保存する
     if (first === true) {
@@ -21,7 +19,7 @@ module.exports = function colorChange(flag) {
             changed = false;
         } else {
             var keys = [
-                'subject',
+                'noun',
                 'adjective',
                 'verb',
                 'adverb',
@@ -55,7 +53,7 @@ function changeHTML(fontColors) {
             var taggedWord = taggedWords[i];
             var word = taggedWord[0];
             var tag = taggedWord[1];
-            console.log(word + ' / ' + tag);
+            //console.log(word + ' / ' + tag);
 
             if (!(word === "'" || word === "," || word === "." || prevWord === "'")) {
                 replacedSentence += " ";
@@ -64,7 +62,7 @@ function changeHTML(fontColors) {
             //名詞
             if (tag === "NN" || tag === "NNP" || tag === "NNPS" 
                 || tag === "NNS" || tag === "PRP" || tag == "PRP$" || tag === "EX") {
-                replacedSentence += fontColors.subject + word + '</font>';
+                replacedSentence += fontColors.noun + word + '</font>';
                 //形容詞
             } else if (tag === "JJ" || tag === "JJR" || tag === "JJS") {
                 replacedSentence += fontColors.adjective + word + '</font>';
@@ -78,7 +76,7 @@ function changeHTML(fontColors) {
             }   //助動詞
             else if (tag === "MD") {
                 replacedSentence += fontColors.auxiliaryVerb + word + '</font>';
-                //準動詞
+                //関係詞
             } else if (tag === "WDT" || tag === "WP" || tag === "WP$" || tag === "WRB") {
                 replacedSentence += fontColors.relative + word + '</font>';
                 //接続詞

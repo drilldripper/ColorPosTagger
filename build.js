@@ -1,12 +1,10 @@
 (function(f){if(typeof exports==="object"&&typeof module!=="undefined"){module.exports=f()}else if(typeof define==="function"&&define.amd){define([],f)}else{var g;if(typeof window!=="undefined"){g=window}else if(typeof global!=="undefined"){g=global}else if(typeof self!=="undefined"){g=self}else{g=this}g.colorChange = f()}})(function(){var define,module,exports;return (function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
 var pos = require('pos');
-ptags = [];
 first = true;
 changed = false;
 htmlpage = '';
 module.exports = function colorChange(flag) {
     console.log('init');
-    console.log(ptags.length);
     let i = 0;
     //最初だけページを保存する
     if (first === true) {
@@ -22,7 +20,7 @@ module.exports = function colorChange(flag) {
             changed = false;
         } else {
             var keys = [
-                'subject',
+                'noun',
                 'adjective',
                 'verb',
                 'adverb',
@@ -56,7 +54,7 @@ function changeHTML(fontColors) {
             var taggedWord = taggedWords[i];
             var word = taggedWord[0];
             var tag = taggedWord[1];
-            console.log(word + ' / ' + tag);
+            //console.log(word + ' / ' + tag);
 
             if (!(word === "'" || word === "," || word === "." || prevWord === "'")) {
                 replacedSentence += " ";
@@ -65,7 +63,7 @@ function changeHTML(fontColors) {
             //名詞
             if (tag === "NN" || tag === "NNP" || tag === "NNPS" 
                 || tag === "NNS" || tag === "PRP" || tag == "PRP$" || tag === "EX") {
-                replacedSentence += fontColors.subject + word + '</font>';
+                replacedSentence += fontColors.noun + word + '</font>';
                 //形容詞
             } else if (tag === "JJ" || tag === "JJR" || tag === "JJS") {
                 replacedSentence += fontColors.adjective + word + '</font>';
@@ -79,7 +77,7 @@ function changeHTML(fontColors) {
             }   //助動詞
             else if (tag === "MD") {
                 replacedSentence += fontColors.auxiliaryVerb + word + '</font>';
-                //準動詞
+                //関係詞
             } else if (tag === "WDT" || tag === "WP" || tag === "WP$" || tag === "WRB") {
                 replacedSentence += fontColors.relative + word + '</font>';
                 //接続詞

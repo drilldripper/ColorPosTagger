@@ -1,13 +1,13 @@
 //default color
 chrome.storage.local.set({
-	 'noun': '<font color="#FF6347">', 
-	 'adjective':'<font color="#1E90FF">' ,
-	 'verb': '<font color="#FFA500">', 
-	 'adverb': '<font color="#008080">', 
-	 'auxiliaryVerb':'<font color="#008000">' ,
-	 'relative': '<font color="#9ACD32">', 
-	 'conjunction':'<font color="#DC143C">',
-	 'determiner': '<font color="#FF6347">'
+	 'noun': '<font color="#009250">', 
+	 'adjective':'<font color="#1F91BE">' ,
+	 'verb': '<font color="#EDAD0B">', 
+	 'adverb': '<font color="#5D639E">', 
+	 'auxiliaryVerb':'<font color="#A4C520">' ,
+	 'relative': '<font color="#744199">', 
+	 'conjunction':'<font color="#DA5019">',
+	 'determiner': '<font color="#009250">'
 	}, function () {
 	console.log('Settings saved');
 });
@@ -40,15 +40,15 @@ chrome.browserAction.onClicked.addListener(function (id, bookmark) {
 
 
 //アイコンの更新
-var toggle = false;
+var toggle = true;
 chrome.browserAction.onClicked.addListener(function (tab) {
   toggle = !toggle;
   if (toggle) {
-    chrome.browserAction.setIcon({ path: "icon1.png", tabId: tab.id });
+    chrome.browserAction.setIcon({ path: "icon_before.png", tabId: tab.id });
     chrome.tabs.executeScript(tab.id, { file: "SCRIPT.user.js" });
   }
   else {
-    chrome.browserAction.setIcon({ path: "icon2.png", tabId: tab.id });
+    chrome.browserAction.setIcon({ path: "icon_after.png", tabId: tab.id });
     chrome.tabs.executeScript(tab.id, { code: "alert()" });
   }
 });

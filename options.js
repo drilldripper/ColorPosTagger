@@ -34,16 +34,16 @@ function save_options() {
 // stored in chrome.storage.
 function restore_options() {
   chrome.storage.local.get({
-    noun: 'a',
-    adjective: 'b',
-    verb: 'c',
-    adverb: 'd',
-    auxiliaryVerb: 'e',
-    relative: 'f',
-    conjunction: 'g',
-    determiner: 'h'
+    noun: 'Green',
+    adjective: 'Blue',
+    verb: 'Orange',
+    adverb: 'Pale-purple',
+    auxiliaryVerb: 'Yellow-green',
+    relative: 'Purple',
+    conjunction: 'Red',
+    determiner: 'Soil'
 
-    
+
   }, function(items) {
     document.getElementById('noun').value = items.noun;
     document.getElementById('adjective').value = items.adjective;

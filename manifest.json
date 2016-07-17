@@ -1,7 +1,13 @@
 {
     "manifest_version": 2,
     "name": "Color Parser",
-    "version": "0.1",
+    "version": "1.0",
+    "icons": {
+        "16": "icons/icon16.png",
+        "48": "icons/icon48.png",
+        "128":"icons/icon128.png"
+    },
+    "description": "英語のサイトの文章を品詞分類して、色をつけて読みやすくします。",
     "content_scripts": [
         {
             "matches": [
@@ -23,15 +29,13 @@
         "persistent": false
     },
     "browser_action": {
-        "default_icon": "icon1.png",
+        "default_icon": "icon_before.png",
         "default_title": "Color Parser"
     },
     "permissions": [
         "tabs",
         "storage"
-
     ],
-
     "options_ui": {
         // Required.
         "page": "options.html",
