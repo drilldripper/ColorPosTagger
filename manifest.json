@@ -15,15 +15,15 @@
                 "https://*/*"
             ],
             "js": [
-                "jquery-3.0.0.min.js",
-                "build.js",
-                "change-color.js"
+                "src/jquery-3.0.0.min.js",
+                "src/pos-bundle.js",
+                "src/change-color.js"
             ]
         }
     ],
     "background": {
         "scripts": [
-            "background.js"
+            "src/background.js"
         ],
         //To be Event Pages
         "persistent": false
@@ -38,7 +38,7 @@
     ],
     "options_ui": {
         // Required.
-        "page": "options.html",
+        "page": "src/options.html",
         // Recommended.
         "chrome_style": true
         // Not recommended; only provided for backwards compatibility,
