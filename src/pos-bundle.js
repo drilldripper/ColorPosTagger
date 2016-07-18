@@ -298178,7 +298178,7 @@ module.exports = function colorChange(flag) {
                 'conjunction',
                 'determiner'
             ];
-            chrome.storage.local.get(keys, function (items) {
+            chrome.storage.sync.get(keys, function (items) {
                 console.log(items);
                 changeHTML(items);
             });

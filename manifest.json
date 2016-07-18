@@ -25,7 +25,6 @@
         "scripts": [
             "src/background.js"
         ],
-        //To be Event Pages
         "persistent": false
     },
     "browser_action": {
@@ -37,9 +36,7 @@
         "storage"
     ],
     "options_ui": {
-        // Required.
         "page": "src/options.html",
-        // Recommended.
         "chrome_style": true
     }
 }
