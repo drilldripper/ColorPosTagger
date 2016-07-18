@@ -9,7 +9,7 @@ function save_options() {
   var conjunction = document.getElementById('conjunction').value;
   var determiner = document.getElementById('determiner').value;
 
-  chrome.storage.local.set({
+  chrome.storage.sync.set({
     'noun': noun,
     'adjective':adjective,
     'verb':verb,
@@ -33,7 +33,7 @@ function save_options() {
 // Restores select box and checkbox state using the preferences
 // stored in chrome.storage.
 function restore_options() {
-  chrome.storage.local.get({
+  chrome.storage.sync.get({
     noun: 'Green',
     adjective: 'Blue',
     verb: 'Orange',

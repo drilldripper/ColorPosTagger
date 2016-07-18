@@ -5,7 +5,7 @@ htmlpage = '';
 module.exports = function colorChange(flag) {
     console.log('init');
     let i = 0;
-    //最初だけページを保存する
+    //save original web page
     if (first === true) {
         htmlpage = $('body').html();
         first = false;
@@ -13,8 +13,7 @@ module.exports = function colorChange(flag) {
     $(function () {
         if (changed == true) {
             console.log("recovery");
-            //書き換え後のDOM要素はjqueryのhtmlでは取得できないので
-            //diertyな方法を使う
+            //a bit dirty..
             $('body').empty().append(htmlpage);
             changed = false;
         } else {
@@ -43,7 +42,7 @@ function changeHTML(fontColors) {
     var prevWord = '';
     $('p').each(function () {
         var word = $(this).html();
-        //htmlのタグを消す正規表現
+        //delete unneccesary html tags
         word = word.replace(/<("[^"]*"|'[^']*'|[^'">])*>/g, '');
         var words = new pos.Lexer().lex(word);
         var tagger = new pos.Tagger();
@@ -58,34 +57,34 @@ function changeHTML(fontColors) {
             if (!(word === "'" || word === "," || word === "." || prevWord === "'")) {
                 replacedSentence += " ";
             }
-            //品詞分類する
-            //名詞
-            if (tag === "NN" || tag === "NNP" || tag === "NNPS" 
+            //parse
+            //noun
+            if (tag === "NN" || tag === "NNP" || tag === "NNPS"
                 || tag === "NNS" || tag === "PRP" || tag == "PRP$" || tag === "EX") {
                 replacedSentence += fontColors.noun + word + '</font>';
-                //形容詞
+                //adjective
             } else if (tag === "JJ" || tag === "JJR" || tag === "JJS") {
                 replacedSentence += fontColors.adjective + word + '</font>';
-                //副詞
+                //adverb
             } else if (tag === "RB" || tag === "RBR" || tag === "RBS") {
                 replacedSentence += fontColors.adverb + word + '</font>';
-            }   //動詞
+            }   //verb
             else if (tag === "VB" || tag === "VBD" || tag === "VBG" || tag === "VBN"
                 || tag === "VBP" || tag === "VBZ") {
                 replacedSentence += fontColors.verb + word + '</font>';
-            }   //助動詞
+            }   //auxiliaryVerb
             else if (tag === "MD") {
                 replacedSentence += fontColors.auxiliaryVerb + word + '</font>';
-                //関係詞
+                //relative
             } else if (tag === "WDT" || tag === "WP" || tag === "WP$" || tag === "WRB") {
                 replacedSentence += fontColors.relative + word + '</font>';
-                //接続詞
+                //conjunction
             } else if (tag === "IN" || tag === "CC") {
                 replacedSentence += fontColors.conjunction + word + '</font>';
-                //冠詞
+                //determiner
             } else if (tag === "DT") {
                 replacedSentence += fontColors.determiner + word + '</font>';
-                //その他
+                //others
             } else {
                 replacedSentence += word;
             }

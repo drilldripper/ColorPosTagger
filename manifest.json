@@ -1,13 +1,13 @@
 {
     "manifest_version": 2,
-    "name": "Color Parser",
+    "name": "カラフル英語品詞分類",
     "version": "1.0",
     "icons": {
-        "16": "icons/icon128.png",
-        "48": "icons/icon128.png",
+        "16": "icons/icon16.png",
+        "48": "icons/icon48.png",
         "128":"icons/icon128.png"
     },
-    "description": "英語のサイトの文章を品詞分類して、色をつけて読みやすくします。",
+    "description": "英語を品詞分類して色分けすることで、ウェブサイトを読みやすくします。",
     "content_scripts": [
         {
             "matches": [
@@ -41,8 +41,5 @@
         "page": "src/options.html",
         // Recommended.
         "chrome_style": true
-        // Not recommended; only provided for backwards compatibility,
-        // and will be unsupported in a future version of Chrome (TBD).
-        //"open_in_tab": true
     }
 }
