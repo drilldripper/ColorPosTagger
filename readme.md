@@ -1,35 +1,23 @@
-ColorPosTagger
+カラフル英語品詞分類
 ====
 
-Google Chromeで閲覧している英語のページを品詞分類し、色を付けることによって英語読解の補助を行います。
-
+英語を品詞分類して色分けすることで、ウェブサイトを読みやすくするGoogle Chrome拡張です。
 
 ## Demo
-以下のページに拡張機能を適応した例
 
-http://www.wired.com/2016/07/feynman-diagrams-almost-saved-space/
-
-
-- Before page
-
-![my image](images/before.PNG)
-
-
-- After page
-
-
-![my image](images/after.PNG)
+![demo_gif](demo/apply.gif)
 
 ## Usage
-拡張機能をインストールした後にアドレスバーにアイコンが表示されます。
+Chrome ウェブストアからインストールしてください。
 
-アイコンをクリックすると品詞分類が行われ、ページに色がつきます。
+[カラフル英語品詞分類](https://chrome.google.com/webstore/detail/%E3%82%AB%E3%83%A9%E3%83%95%E3%83%AB%E8%8B%B1%E8%AA%9E%E5%93%81%E8%A9%9E%E5%88%86%E9%A1%9E/doegjeglaefnalfehmeofnalobnbaakp)
 
-## Install
-本リポジトリをクローンし、拡張機能のデベロッパーモードで読み込んでください。
+## Requirement
+品詞分類に[pos-js](https://github.com/dariusk/pos-js)を[browserify](http://browserify.org/)
+で変換したものを使用しています。
 
 ## Licence
-MIT
+GNU LGPLv3
 
 ## Author
 
