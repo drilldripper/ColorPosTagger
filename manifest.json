@@ -3,8 +3,8 @@
     "name": "Color Parser",
     "version": "1.0",
     "icons": {
-        "16": "icons/icon16.png",
-        "48": "icons/icon48.png",
+        "16": "icons/icon128.png",
+        "48": "icons/icon128.png",
         "128":"icons/icon128.png"
     },
     "description": "英語のサイトの文章を品詞分類して、色をつけて読みやすくします。",
@@ -29,7 +29,7 @@
         "persistent": false
     },
     "browser_action": {
-        "default_icon": "icon_before.png",
+        "default_icon": "icons/icon_before.png",
         "default_title": "Color Parser"
     },
     "permissions": [

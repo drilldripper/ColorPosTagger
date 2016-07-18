@@ -44,11 +44,11 @@ var toggle = true;
 chrome.browserAction.onClicked.addListener(function (tab) {
   toggle = !toggle;
   if (toggle) {
-    chrome.browserAction.setIcon({ path: "icon_before.png", tabId: tab.id });
+    chrome.browserAction.setIcon({ path: "icons/icon_before.png", tabId: tab.id });
     chrome.tabs.executeScript(tab.id, { file: "SCRIPT.user.js" });
   }
   else {
-    chrome.browserAction.setIcon({ path: "icon_after.png", tabId: tab.id });
+    chrome.browserAction.setIcon({ path: "icons/icon_after.png", tabId: tab.id });
     chrome.tabs.executeScript(tab.id, { code: "alert()" });
   }
 });
