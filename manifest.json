@@ -29,7 +29,7 @@
     },
     "browser_action": {
         "default_icon": "icons/icon_before.png",
-        "default_title": "Color Parser"
+        "default_title": "カラフル英語品詞分類"
     },
     "permissions": [
         "tabs",
