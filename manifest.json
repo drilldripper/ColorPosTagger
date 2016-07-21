@@ -1,7 +1,7 @@
 {
     "manifest_version": 2,
     "name": "カラフル英語品詞分類",
-    "version": "1.0",
+    "version": "1.0.1",
     "icons": {
         "16": "icons/icon16.png",
         "48": "icons/icon48.png",

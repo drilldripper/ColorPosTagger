@@ -28,8 +28,9 @@ module.exports = function colorChange(flag) {
                 'determiner'
             ];
             chrome.storage.sync.get(keys, function (items) {
-                console.log(items);
-                changeHTML(items);
+                //console.log(items);
+                changeHTML(items,'p');
+                // changeHTML(items, 'list');
             });
             changed = true;
             console.log("change");
@@ -38,9 +39,9 @@ module.exports = function colorChange(flag) {
 };
 
 
-function changeHTML(fontColors) {
+function changeHTML(fontColors, focusTag) {
     var prevWord = '';
-    $('p').each(function () {
+    $(focusTag).each(function () {
         var word = $(this).html();
         //delete unneccesary html tags
         word = word.replace(/<("[^"]*"|'[^']*'|[^'">])*>/g, '');
@@ -90,7 +91,7 @@ function changeHTML(fontColors) {
             }
             prevWord = word;
         }
-        $(this).replaceWith("<p>" + replacedSentence + "</p>");
+        $(this).replaceWith('<' + focusTag + '>' + replacedSentence + '</' + focusTag + '>');
     });
 }
 
