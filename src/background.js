@@ -2,9 +2,9 @@
 chrome.storage.sync.set({
 	'noun': '<font color="#009250">',
 	'adjective': '<font color="#1F91BE">',
-	'verb': '<font color="#EDAD0B">',
+	'verb': '<font color="#DE9610">',
 	'adverb': '<font color="#5D639E">',
-	'auxiliaryVerb': '<font color="#A4C520">',
+	'auxiliaryVerb': '<font color="#B61972">',
 	'relative': '<font color="#744199">',
 	'conjunction': '<font color="#DA5019">',
 	'determiner': '<font color="#009250">'
